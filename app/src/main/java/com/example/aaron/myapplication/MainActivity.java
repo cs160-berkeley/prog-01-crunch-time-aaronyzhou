@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView situpOut = (TextView) findViewById(R.id.situp_out_number);
         final TextView jumpingjackOut = (TextView) findViewById(R.id.jumpingjack_out_number);
         final TextView joggingOut = (TextView) findViewById(R.id.jogging_out_number);
-        final TextView calories = (TextView) findViewById(R.id.calories_label);
+        final TextView calories = (TextView) findViewById(R.id.calories_number);
 
         final TextView minuteReps = (TextView) findViewById(R.id.minute_reps);
         final EditText editText = (EditText) findViewById(R.id.number_input);
@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
         final Spinner spinner = (Spinner) findViewById(R.id.input_fitness_spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.exercises_array, android.R.layout.simple_spinner_item);
+                R.array.exercises_array, R.layout.cool_spinner_item);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.cool_spinner_dropdown);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 //minuteReps.setText(s.toString());
                 double i = 0;
-                if(!s.toString().isEmpty()) {
+                if (!s.toString().isEmpty()) {
                     i = Double.parseDouble(s.toString());
                 }
 
@@ -88,57 +88,21 @@ public class MainActivity extends AppCompatActivity {
                 int c = 0;
                 int j = spinner.getSelectedItemPosition();
 
-                c =  (int) (100*i/eV[j]);
-                pn = (int) (eV[0]/eV[j] * i);
-                sn = (int) (eV[1]/eV[j] * i);
-                jn = (int) (eV[2]/eV[j] * i);
-                gn = (int) (eV[3]/eV[j] * i);
+                c = (int) (100 * i / eV[j]);
+                pn = (int) (eV[0] / eV[j] * i);
+                sn = (int) (eV[1] / eV[j] * i);
+                jn = (int) (eV[2] / eV[j] * i);
+                gn = (int) (eV[3] / eV[j] * i);
 
-                calories.setText(getString(R.string.calories) + Integer.toString(c));
-                pushupOut.setText(Integer.toString(pn));
-                situpOut.setText(Integer.toString(sn));
-                jumpingjackOut.setText(Integer.toString(jn));
-                joggingOut.setText(Integer.toString(gn));
-
-                /*
-                if(j == 0) {
-                    pn = i;
-                    sn = i/eV[0]*eV[1];
-                } else if(j == 1) {
-
-                } else if(j == 2) {
-
-                } else if(j == 3) {
-
-                }*/
+                calories.setText(Integer.toString(c));
+                pushupOut.setText(Integer.toString(pn) + " reps");
+                situpOut.setText(Integer.toString(sn) + " reps");
+                jumpingjackOut.setText(Integer.toString(jn) + " minutes");
+                joggingOut.setText(Integer.toString(gn) + " minutes");
 
             }
         });
 
-
-
     }
 
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
 }
