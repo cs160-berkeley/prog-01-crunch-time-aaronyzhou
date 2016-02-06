@@ -8,5 +8,5 @@ Aaron Zhou ([aaronzhou@berkeley.edu](mailto:aaronzhou@berkeley.edu))
 
 ## Demo Video
 
-[Cool Calorie Calculator Demo] (https://youtu.be/2L3IN­QLSA4)
+[Cool Calorie Calculator Demo] (https://youtu.be/2L3IN-QLSA4)
 
